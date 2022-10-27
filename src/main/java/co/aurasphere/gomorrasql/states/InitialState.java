@@ -51,21 +51,21 @@ public class InitialState extends AbstractState {
 									"%COLUMN_NAME%", true, false, q3 -> new CommaSeparedValuesState(q3, q3.getValues(),
 											null, "%VALUE%", true, true, FinalState::new))));
 		}
-		if (token.equalsIgnoreCase(Keywords.COMMIT_KEYWORDS[0])) {
+		if (token.equalsIgnoreCase(Keywords.COMMIT_KEYWORD)) {
 			queryInfo.setType(QueryType.COMMIT);
-			return new GreedyMatchKeywordState(queryInfo, Keywords.COMMIT_KEYWORDS, FinalState::new);
+			return new GreedyMatchKeywordState(queryInfo, Keywords.COMMIT_KEYWORD, FinalState::new);
 		}
-		if (token.equalsIgnoreCase(Keywords.ROLLBACK_KEYWORD)) {
+		if (token.equalsIgnoreCase(Keywords.ROLLBACK_KEYWORDS)) {
 			queryInfo.setType(QueryType.ROLLBACK);
 			return new FinalState(queryInfo);
 		}
-		if (token.equalsIgnoreCase(Keywords.BEGIN_TRANSACTION_KEYWORDS[0])) {
+		if (token.equalsIgnoreCase(Keywords.BEGIN_TRANSACTION_KEYWORD)) {
 			queryInfo.setType(QueryType.BEGIN_TRANSACTION);
-			return new GreedyMatchKeywordState(queryInfo, Keywords.BEGIN_TRANSACTION_KEYWORDS, FinalState::new);
+			return new GreedyMatchKeywordState(queryInfo, Keywords.BEGIN_TRANSACTION_KEYWORD, FinalState::new);
 		}
 		throw new CaggiaFaException(Arrays.asList(Keywords.SELECT_KEYWORD, Keywords.UPDATE_KEYWORD,
-				Keywords.INSERT_KEYWORDS[0], Keywords.DELETE_KEYWORDS[0], Keywords.BEGIN_TRANSACTION_KEYWORDS[0],
-				Keywords.COMMIT_KEYWORDS[0], Keywords.ROLLBACK_KEYWORD), token);
+				Keywords.INSERT_KEYWORDS[0], Keywords.DELETE_KEYWORDS[0], Keywords.BEGIN_TRANSACTION_KEYWORD,
+				Keywords.COMMIT_KEYWORD, Keywords.ROLLBACK_KEYWORD), token);
 	}
 
 }
