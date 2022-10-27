@@ -65,7 +65,7 @@ public class InitialState extends AbstractState {
 		}
 		throw new CaggiaFaException(Arrays.asList(Keywords.SELECT_KEYWORD, Keywords.UPDATE_KEYWORD,
 				Keywords.INSERT_KEYWORDS[0], Keywords.DELETE_KEYWORDS[0], Keywords.BEGIN_TRANSACTION_KEYWORD,
-				Keywords.COMMIT_KEYWORD, Keywords.ROLLBACK_KEYWORD), token);
+				Keywords.COMMIT_KEYWORD, Keywords.ROLLBACK_KEYWORDS), token);
 	}
 
 }
