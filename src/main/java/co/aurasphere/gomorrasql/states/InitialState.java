@@ -55,7 +55,7 @@ public class InitialState extends AbstractState {
 			queryInfo.setType(QueryType.COMMIT);
 			return new GreedyMatchKeywordState(queryInfo, Keywords.COMMIT_KEYWORD, FinalState::new);
 		}
-		if (token.equalsIgnoreCase(Keywords.ROLLBACK_KEYWORDS)) {
+		if (token.equalsIgnoreCase(Keywords.ROLLBACK_KEYWORDS[0])) {
 			queryInfo.setType(QueryType.ROLLBACK);
 			return new FinalState(queryInfo);
 		}
@@ -65,7 +65,7 @@ public class InitialState extends AbstractState {
 		}
 		throw new CaggiaFaException(Arrays.asList(Keywords.SELECT_KEYWORD, Keywords.UPDATE_KEYWORD,
 				Keywords.INSERT_KEYWORDS[0], Keywords.DELETE_KEYWORDS[0], Keywords.BEGIN_TRANSACTION_KEYWORD,
-				Keywords.COMMIT_KEYWORD, Keywords.ROLLBACK_KEYWORDS), token);
+				Keywords.COMMIT_KEYWORD, Keywords.ROLLBACK_KEYWORDS[0]), token);
 	}
 
 }
